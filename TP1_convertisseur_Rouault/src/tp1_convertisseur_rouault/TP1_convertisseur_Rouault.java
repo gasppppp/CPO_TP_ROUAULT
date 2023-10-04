@@ -34,10 +34,22 @@ public class TP1_convertisseur_Rouault {
         System.out.println("6) De Farenheit vers Kelvin");
         int choix = sc.nextInt();
         if (choix ==1) {
-            System.out.println(CelciusVersKelvin(Saisie));
+            System.out.println(Saisie+ "degré Celcius est égal à "+CelciusVersKelvin(Saisie) + "degré Kelvin");
         }
         if (choix==2){
             System.out.println(Saisie+" degré Kelvin est égal à "+KelvinVersCelcius(Saisie)+" degré Celcius");
+        }
+        if (choix==3){
+            System.out.println(Saisie+" degré Farenheit est égal à "+FarenheitVersCelcius(Saisie)+ "degré Celcius");
+        }
+        if (choix==4){
+            System.out.println(Saisie+ "degré Celcius est égal à "+CelciusVersFarenheit(Saisie) + "degré Farenheit");
+        }
+        if (choix==5){
+            System.out.println(Saisie+ "degré Kelvin est égal à "+KelvinVersFarenheit(Saisie) + "degré Farenheit");
+        }
+        if (choix==6){
+            System.out.println(Saisie+ "degré Farenheit est égal à "+FarenheitVersKelvin(Saisie) + "degré Kelvin");
         }
         
             // TODO code application logic here
