@@ -43,16 +43,18 @@ import java.util.ArrayList;
         Guerrier guerrier1= new Guerrier("Conan",78,false);
         Guerrier guerrier2= new Guerrier("Lannister",45,true);
         
+        
         ArrayList<Personnage> tabperso=new ArrayList();
         tabperso.add(magicien1);
         tabperso.add(magicien2);
         tabperso.add(guerrier1);
         tabperso.add(guerrier2);
         
+        
         for (int i=0;i<tabperso.size();i++){
             Personnage personnage=tabperso.get(i);
             System.out.println( personnage);
-        }    
+        }  
         
         Magicien magicien3=new Magicien("Jean",87,true);
         Guerrier guerrier3=new Guerrier("Arthur",1,false);
@@ -71,7 +73,7 @@ import java.util.ArrayList;
         guerrier3.ajoutarme(epee5);
         guerrier3.ajoutarme(epee4);
         guerrier3.ajoutarme(baton5);
-        guerrier3.equipeArme(epee3);
+        guerrier3.equipeArme(epee4);
         
         int compteur=0;
         for (int i=0; i<magicien3.getArmepossedees().size();i++){
@@ -79,9 +81,14 @@ import java.util.ArrayList;
                 compteur+=1;  
             }   
         }
-        System.out.println("Le magicien a "+compteur+" armes préferées");
+        System.out.println("Le magicien a "+compteur+" armes preferees");
         
+        System.out.println(guerrier3.toString());
+        System.out.println(magicien3.toString());
         
+        System.out.println("Le nombre total de personnages est : " + Personnage.getNombrePerso());
+        System.out.println("Le nombre total de Guerrier est : " + Guerrier.getNombreGuerriers());
+        System.out.println("Le nombre total de Magicien est : " + Magicien.getNombreMagiciens());
     }
     
 }
