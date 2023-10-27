@@ -24,7 +24,7 @@ public class LightOff_ROUAULT_version_console {
         
         
         
-        grille1.activerLigneColonneOuDiagonaleAleatoire();
+        /*grille1.activerLigneColonneOuDiagonaleAleatoire();
         System.out.println(grille1.toString());
         grille1.activerDiagonaleMontante();
         System.out.println(grille1.toString());
@@ -37,6 +37,10 @@ public class LightOff_ROUAULT_version_console {
         grille1.cellulesToutesEteintes();
         System.out.println(grille1.toString());
         grille1.eteindreToutesLesCellules();
+        System.out.println(grille1.toString());*/
+        
+        Partie partie1=new Partie(grille1,5);
+        partie1.lancerPartie();
         System.out.println(grille1.toString());
     }
     
