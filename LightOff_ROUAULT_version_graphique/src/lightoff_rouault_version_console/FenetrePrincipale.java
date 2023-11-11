@@ -7,7 +7,6 @@ import javax.swing.JButton;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Gaspard Rouault
@@ -15,12 +14,37 @@ import javax.swing.JButton;
 public class FenetrePrincipale extends javax.swing.JFrame {
 
     GrilledeJeu grille;
-    int nbCoups;
+    int nbCoups, nbCoupsMax;
+
+    boolean mode1 = false;
+    boolean mode2 = false;
+
+    public void GrilleVisible(boolean etat) {
+        PanneauGrille.setVisible(etat);
+        btnLigne0.setVisible(etat);
+        btnLigne1.setVisible(etat);
+        btnLigne2.setVisible(etat);
+        btnLigne3.setVisible(etat);
+        btnLigne4.setVisible(etat);
+        btnLigne5.setVisible(etat);
+        btnLigne6.setVisible(etat);
+        btnColonne0.setVisible(etat);
+        btnColonne1.setVisible(etat);
+        btnColonne2.setVisible(etat);
+        btnColonne3.setVisible(etat);
+        btnColonne4.setVisible(etat);
+        btnColonne5.setVisible(etat);
+        btnColonne6.setVisible(etat);
+        btnDiagonaleM.setVisible(etat);
+        btnDiagonaleD.setVisible(etat);
+        lbl_coups_restants.setVisible(etat);
+    }
 
     /**
      * Creates new form FenetrePrincipale
      */
     public FenetrePrincipale() {
+
         initComponents();
         int nbLignes = 7;
         int nbColonnes = 7;
@@ -33,36 +57,82 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
         }
         this.initialiserPartie();
+        GrilleVisible(false);
 
     }
 
-    public void AfficherJlabel2(){
-        
+    public void CliquerMode(int type, int indice) {
+
+        if (type == 3) {
+
+            if (indice == 1) {
+                nbCoupsMax = 10;
+                modebtn2.setVisible(false);
+                modebtn1.setVisible(false);
+                mode1 = true;
+
+            }
+            if (indice == 2) {
+                nbCoupsMax = 5;
+                modebtn1.setVisible(false);
+                modebtn2.setVisible(false);
+                mode2 = true;
+
+            }
+            GrilleVisible(true);
+            lbl_coups_restants.setText("Coups restants : " + nbCoupsMax);
+        }
     }
-    
-    
+
     public void CliquerBoutton(int type, int indice) {
         nbCoups++;
-        
-        if(nbCoups>10){
-            jLabel1.setText("Vous avez perdu ! Vous avez dépassé votre nombre de coups maximum possible en mode facile");
-            btnLigne0.setVisible(false);
-            btnLigne1.setVisible(false);
-            btnLigne2.setVisible(false);
-            btnLigne3.setVisible(false);
-            btnLigne4.setVisible(false);
-            btnLigne5.setVisible(false);
-            btnLigne6.setVisible(false);
-            btnColonne0.setVisible(false);
-            btnColonne1.setVisible(false);
-            btnColonne2.setVisible(false);
-            btnColonne3.setVisible(false);
-            btnColonne4.setVisible(false);
-            btnColonne5.setVisible(false);
-            btnColonne6.setVisible(false);
-            btnDiagonaleM.setVisible(false);
-            btnDiagonaleD.setVisible(false);
-            
+
+        if (mode1 == true) {
+            if (nbCoups > nbCoupsMax) {
+                jLabel1.setText("Vous avez perdu ! Vous avez dépassé votre nombre de coups maximum possible en mode facile");
+                btnLigne0.setVisible(false);
+                btnLigne1.setVisible(false);
+                btnLigne2.setVisible(false);
+                btnLigne3.setVisible(false);
+                btnLigne4.setVisible(false);
+                btnLigne5.setVisible(false);
+                btnLigne6.setVisible(false);
+                btnColonne0.setVisible(false);
+                btnColonne1.setVisible(false);
+                btnColonne2.setVisible(false);
+                btnColonne3.setVisible(false);
+                btnColonne4.setVisible(false);
+                btnColonne5.setVisible(false);
+                btnColonne6.setVisible(false);
+                btnDiagonaleM.setVisible(false);
+                btnDiagonaleD.setVisible(false);
+                lbl_coups_restants.setVisible(false);
+
+            }
+        }
+
+        if (mode2 == true) {
+            if (nbCoups > nbCoupsMax) {
+                jLabel1.setText("Vous avez perdu ! Vous avez dépassé votre nombre de coups maximum possible en mode difficile");
+                btnLigne0.setVisible(false);
+                btnLigne1.setVisible(false);
+                btnLigne2.setVisible(false);
+                btnLigne3.setVisible(false);
+                btnLigne4.setVisible(false);
+                btnLigne5.setVisible(false);
+                btnLigne6.setVisible(false);
+                btnColonne0.setVisible(false);
+                btnColonne1.setVisible(false);
+                btnColonne2.setVisible(false);
+                btnColonne3.setVisible(false);
+                btnColonne4.setVisible(false);
+                btnColonne5.setVisible(false);
+                btnColonne6.setVisible(false);
+                btnDiagonaleM.setVisible(false);
+                btnDiagonaleD.setVisible(false);
+                lbl_coups_restants.setVisible(false);
+
+            }
         }
         if (type == 0) {
             this.grille.activerLigneDeCellules(indice);
@@ -107,8 +177,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             btnColonne6.setVisible(false);
             btnDiagonaleM.setVisible(false);
             btnDiagonaleD.setVisible(false);
+            lbl_coups_restants.setVisible(false);
         }
-
+        int nbCoupsRestants = nbCoupsMax - nbCoups;
+        lbl_coups_restants.setText("Coups restants : " + nbCoupsRestants);
     }
 
     public void initialiserPartie() {
@@ -143,7 +215,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnDiagonaleM = new javax.swing.JButton();
         btnDiagonaleD = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        modebtn1 = new javax.swing.JRadioButton();
+        modebtn2 = new javax.swing.JRadioButton();
+        lbl_coups_restants = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,7 +350,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(btnColonne6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 50, 50));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 51));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 520, 290));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 520, 230));
 
         btnDiagonaleM.setText("DiagonaleD");
         btnDiagonaleM.addActionListener(new java.awt.event.ActionListener() {
@@ -294,8 +368,24 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         getContentPane().add(btnDiagonaleD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 100, 70));
 
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 550, 110));
+        modebtn1.setText("Mode facile (10 coups max)");
+        modebtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modebtn1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(modebtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, -1, -1));
+
+        modebtn2.setText("Mode difficile (5 coups max)");
+        modebtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modebtn2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(modebtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, -1, -1));
+
+        lbl_coups_restants.setText("Coups restants");
+        getContentPane().add(lbl_coups_restants, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 190, 100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -365,6 +455,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.CliquerBoutton(2, 1);// TODO add your handling code here:
     }//GEN-LAST:event_btnDiagonaleDActionPerformed
 
+    private void modebtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modebtn1ActionPerformed
+        this.CliquerMode(3, 1);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modebtn1ActionPerformed
+
+    private void modebtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modebtn2ActionPerformed
+        this.CliquerMode(3, 2);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modebtn2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -391,17 +491,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FenetrePrincipale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
- 
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FenetrePrincipale().setVisible(true);
-                this.AfficherJlabel2();
+
             }
         });
-
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauGrille;
     private javax.swing.JButton btnColonne0;
@@ -421,6 +519,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btnLigne5;
     private javax.swing.JButton btnLigne6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lbl_coups_restants;
+    private javax.swing.JRadioButton modebtn1;
+    private javax.swing.JRadioButton modebtn2;
     // End of variables declaration//GEN-END:variables
 }
