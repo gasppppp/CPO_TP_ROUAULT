@@ -39,7 +39,8 @@ public class Pions {
     //CREER LA METHODE POUR CHECKER QU'UNE CASE VOULUE EST BIEN DANS LA GRILLE
     /*public boolean verifierCaseDansGrille(int position_ligne, int position_colonne, Cartes carte) {
         String animal = carte.nom;
-        
     }*/
+    
+    
     
 }

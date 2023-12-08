@@ -12,6 +12,7 @@ public class GrilleDeJeu {
     CaseGrille[][] matriceCellules;
     int nbLignes;
     int nbColonnes;
+    Pions pionAssociee;
     
     
     
@@ -33,6 +34,8 @@ public class GrilleDeJeu {
             }
         }
     }
+    
+    
     
     
     
