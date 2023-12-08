@@ -262,6 +262,8 @@ public class Fenetre_Principale extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauCarteBasDroite;
@@ -270,9 +272,5 @@ public class Fenetre_Principale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauCarteHautDroite;
     private javax.swing.JPanel PanneauCarteHautGauche;
     private javax.swing.JPanel PanneauGrille;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
